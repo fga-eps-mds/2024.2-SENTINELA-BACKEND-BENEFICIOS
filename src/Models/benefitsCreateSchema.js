@@ -23,7 +23,7 @@ const benefitsCreateSchema = new mongoose.Schema({
         enum: ['Jurídica', 'Física']
     },
     cpfCnpj: {
-        type: Number,
+        type: String,
         required: true,
         unique: true
         //immutable: true
@@ -42,10 +42,10 @@ const benefitsCreateSchema = new mongoose.Schema({
         required: true,
         enum: ['Ativo', 'Inativo']
     },
-
-
-    //dataCadastro
-    
+    dataCadastro: {
+        type: Date,
+        default: Date.now
+    },
     considerarIr: { 
         type: String,
         required: true,
@@ -73,23 +73,24 @@ const benefitsCreateSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-
-    //dataassinatura
-
-    //data inicio
-
+    dataAssinatura: {
+        type: Date,
+        default: Date.now
+    },
+    dataInicio: {
+        type: Date,
+        default: Date.now
+    },
     sitContrato: {
         type: String,
         required: true,
         enum: ['Concluído', 'Pendência', 'Cancelado']
     },
-
-    //datafinal
+    dataFinal: {
+        type: Date,
+        default: Date.now
+    },
     //contratosit
-
-
-
-
 })
 
 const benefitsCreate = mongoose.model('Benefits', benefitsCreateSchema);
