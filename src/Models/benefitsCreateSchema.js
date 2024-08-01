@@ -32,6 +32,64 @@ const benefitsCreateSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    categoria: {
+        type: String,
+        required: true,
+        enum: ['Alimentação','Artes','Escolas','Academias','Outros']
+    },
+    statusConvenio: {
+        type: String,
+        required: true,
+        enum: ['Ativo', 'Inativo']
+    },
+
+
+    //dataCadastro
+    
+    considerarIr: { 
+        type: String,
+        required: true,
+        enum: ['Sim', 'Não']
+    },
+    descontoAut: { 
+        type: String,
+        required: true,
+        enum: ['Sim', 'Não']
+    },
+
+    //logotipo
+
+    site: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    email: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    telefCelular: {
+        type: String,
+        required: true
+    },
+
+    //dataassinatura
+
+    //data inicio
+
+    sitContrato: {
+        type: String,
+        required: true,
+        enum: ['Concluído', 'Pendência', 'Cancelado']
+    },
+
+    //datafinal
+    //contratosit
+
+
+
+
 })
 
 const benefitsCreate = mongoose.model('Benefits', benefitsCreateSchema);
