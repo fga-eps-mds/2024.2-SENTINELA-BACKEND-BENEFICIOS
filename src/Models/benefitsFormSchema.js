@@ -9,31 +9,23 @@ const benefitsCreateSchema = new mongoose.Schema({
     razaoSocial: {
         type: String,
         required: true,
-        enum: ["Jurídica", "Física"],
+        unique: true,
     },
     descricao: {
         type: String,
-        required: true,
-        unique: true,
     },
     tipoPessoa: {
         type: String,
-        required: true,
         enum: ["Jurídica", "Física"],
     },
     cpfCnpj: {
         type: String,
-        required: true,
-        unique: true,
-        //immutable: true
-    }, //verificar
+    },
     ans: {
         type: String,
-        required: true,
     },
     categoria: {
         type: String,
-        required: true,
         enum: ["Alimentação", "Artes", "Escolas", "Academias", "Outros"],
     },
     statusConvenio: {
@@ -60,17 +52,12 @@ const benefitsCreateSchema = new mongoose.Schema({
 
     site: {
         type: String,
-        required: true,
-        unique: true,
     },
     email: {
         type: String,
-        required: true,
-        unique: true,
     },
     telefCelular: {
         type: String,
-        required: true,
     },
     dataAssinatura: {
         type: Date,
@@ -82,7 +69,6 @@ const benefitsCreateSchema = new mongoose.Schema({
     },
     sitContrato: {
         type: String,
-        required: true,
         enum: ["Concluído", "Pendência", "Cancelado"],
     },
     dataFinal: {
