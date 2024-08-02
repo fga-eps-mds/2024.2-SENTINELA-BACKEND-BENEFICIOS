@@ -1,60 +1,59 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const benefitsCreateSchema = new mongoose.Schema({
-
     nome: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
     },
     razaoSocial: {
         type: String,
         required: true,
-        enum: ['Jurídica', 'Física']
+        enum: ["Jurídica", "Física"],
     },
     descricao: {
         type: String,
         required: true,
-        unique: true
-    },  
+        unique: true,
+    },
     tipoPessoa: {
         type: String,
         required: true,
-        enum: ['Jurídica', 'Física']
+        enum: ["Jurídica", "Física"],
     },
     cpfCnpj: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
         //immutable: true
     }, //verificar
     ans: {
         type: String,
-        required: true
+        required: true,
     },
     categoria: {
         type: String,
         required: true,
-        enum: ['Alimentação','Artes','Escolas','Academias','Outros']
+        enum: ["Alimentação", "Artes", "Escolas", "Academias", "Outros"],
     },
     statusConvenio: {
         type: String,
         required: true,
-        enum: ['Ativo', 'Inativo']
+        enum: ["Ativo", "Inativo"],
     },
     dataCadastro: {
         type: Date,
-        default: Date.now
+        default: Date.now,
     },
-    considerarIr: { 
+    considerarIr: {
         type: String,
         required: true,
-        enum: ['Sim', 'Não']
+        enum: ["Sim", "Não"],
     },
-    descontoAut: { 
+    descontoAut: {
         type: String,
         required: true,
-        enum: ['Sim', 'Não']
+        enum: ["Sim", "Não"],
     },
 
     //logotipo
@@ -62,36 +61,36 @@ const benefitsCreateSchema = new mongoose.Schema({
     site: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
     },
     email: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
     },
     telefCelular: {
         type: String,
-        required: true
+        required: true,
     },
     dataAssinatura: {
         type: Date,
-        default: Date.now
+        default: Date.now,
     },
     dataInicio: {
         type: Date,
-        default: Date.now
+        default: Date.now,
     },
     sitContrato: {
         type: String,
         required: true,
-        enum: ['Concluído', 'Pendência', 'Cancelado']
+        enum: ["Concluído", "Pendência", "Cancelado"],
     },
     dataFinal: {
         type: Date,
-        default: Date.now
+        default: Date.now,
     },
     //contratosit
-})
+});
 
-const benefitsCreate = mongoose.model('Benefits', benefitsCreateSchema);
+const benefitsCreate = mongoose.model("Benefits", benefitsCreateSchema);
 module.exports = benefitsCreate;
