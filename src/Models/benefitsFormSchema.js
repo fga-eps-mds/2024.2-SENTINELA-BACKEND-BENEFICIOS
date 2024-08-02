@@ -16,7 +16,7 @@ const benefitsCreateSchema = new mongoose.Schema({
     },
     tipoPessoa: {
         type: String,
-        enum: ["Jurídica", "Física"],
+        enum: ["Jurídica", "Física", ""],
     },
     cpfCnpj: {
         type: String,
@@ -26,7 +26,7 @@ const benefitsCreateSchema = new mongoose.Schema({
     },
     categoria: {
         type: String,
-        enum: ["Alimentação", "Artes", "Escolas", "Academias", "Outros"],
+        enum: ["Alimentação", "Artes", "Escolas", "Academias", "Outros", ""],
     },
     statusConvenio: {
         type: String,
@@ -69,7 +69,7 @@ const benefitsCreateSchema = new mongoose.Schema({
     },
     sitContrato: {
         type: String,
-        enum: ["Concluído", "Pendência", "Cancelado"],
+        enum: ["Concluído", "Pendência", "Cancelado", ""],
     },
     dataFinal: {
         type: Date,
