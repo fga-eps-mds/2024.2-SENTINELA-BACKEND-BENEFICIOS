@@ -75,7 +75,10 @@ const benefitsCreateSchema = new mongoose.Schema({
         type: Date,
         default: Date.now,
     },
-    //contratosit
+    contratoSit: {
+        type: Boolean,
+        default: false,  
+    },
 });
 
 const benefitsCreate = mongoose.model("Benefits", benefitsCreateSchema);
