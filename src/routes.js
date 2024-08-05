@@ -1,6 +1,7 @@
 const express = require("express");
 const routes = express.Router();
 const benefitsFormController = require("./Controllers/benefitsFormController");
+//const { tokenValidation } = require("./Utils/token"); => Utilizacao do token.
 
 // Private
 // routes.get('/benefits', tokenValidation, ???.getUsers);
