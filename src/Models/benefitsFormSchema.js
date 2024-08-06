@@ -48,7 +48,9 @@ const benefitsCreateSchema = new mongoose.Schema({
         enum: ["Sim", "Não"],
     },
 
-    //logotipo
+    logotipo: {
+        type: String,
+    },
 
     site: {
         type: String,
