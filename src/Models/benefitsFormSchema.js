@@ -79,7 +79,7 @@ const benefitsCreateSchema = new mongoose.Schema({
     },
     contratoSit: {
         type: Boolean,
-        default: false,  
+        default: false,
     },
 });
 
