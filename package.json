@@ -30,8 +30,10 @@
     "jest-sonar": "^0.2.16",
     "jsonwebtoken": "^9.0.2",
     "lint-staged": "^15.2.7",
+    "mongodb-memory-server": "^10.0.0",
     "mongoose": "^8.3.5",
-    "nodemailer": "^6.9.14"
+    "nodemailer": "^6.9.14",
+    "supertest": "^7.0.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.0",
