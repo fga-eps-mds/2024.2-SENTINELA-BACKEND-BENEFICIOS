@@ -64,16 +64,16 @@ describe("BenefitsForm Controller Tests", () => {
 
         const res = await request(app).get(`/benefits/${createdBenefit._id}`);
 
-        expect(res.status).toBe(200);
         expect(res.body).toMatchObject(createdBenefit);
+        expect(res.status).toBe(200);
     });
 
     it("should get benefits", async () => {
         const benefitsModelCount = await BenefitsModel.countDocuments({});
         const res = await request(app).get("/benefits");
 
-        expect(res.status).toBe(200);
         expect(res.body.length).toBe(benefitsModelCount);
+        expect(res.status).toBe(200);
     });
 
     it("should delete benefit", async () => {
@@ -88,8 +88,8 @@ describe("BenefitsForm Controller Tests", () => {
             `/benefits/delete/${createdBenefit._id}`
         );
 
-        expect(res.status).toBe(200);
         expect(res.body).toMatchObject(createdBenefit);
+        expect(res.status).toBe(200);
     });
 
     it("should update benefit", async () => {
