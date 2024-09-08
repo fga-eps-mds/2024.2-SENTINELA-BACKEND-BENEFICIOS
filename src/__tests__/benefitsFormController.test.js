@@ -58,6 +58,20 @@ describe("BenefitsForm Controller Tests", () => {
         expect(res.status).toBe(201);
     });
 
+    it("should not create an invalid benefit", async () => {
+        const invalid = {
+            nome: "",
+            razaoSocial: "",
+            statusConvenio: "",
+            considerarIr: "",
+            descontoAut: "",
+        };
+
+        const res = await request(app).post("/benefits/create").send(invalid);
+
+        expect(res.status).toBe(400);
+    });
+
     it("should get benefit by id", async () => {
         const { body: createdBenefit } = await request(app)
             .post("/benefits/create")
@@ -70,6 +84,12 @@ describe("BenefitsForm Controller Tests", () => {
 
         expect(res.body).toMatchObject(createdBenefit);
         expect(res.status).toBe(200);
+    });
+
+    it("should not get benefit without id", async () => {
+        const res = await request(app).get(`/benefits/A1`);
+
+        expect(res.status).toBe(400);
     });
 
     it("should get benefits", async () => {
@@ -96,6 +116,12 @@ describe("BenefitsForm Controller Tests", () => {
         expect(res.status).toBe(200);
     });
 
+    it("should not delete benefit without id", async () => {
+        const res = await request(app).delete(`/benefits/delete/A1`);
+
+        expect(res.status).toBe(400);
+    });
+
     it("should update benefit", async () => {
         const { body: createdBenefit } = await request(app)
             .post("/benefits/create")
@@ -109,5 +135,11 @@ describe("BenefitsForm Controller Tests", () => {
         );
 
         expect(res.status).toBe(200);
+    });
+
+    it("should fail to update benefit", async () => {
+        const res = await request(app).patch(`/benefits/update/A1`);
+
+        expect(res.status).toBe(400);
     });
 });
