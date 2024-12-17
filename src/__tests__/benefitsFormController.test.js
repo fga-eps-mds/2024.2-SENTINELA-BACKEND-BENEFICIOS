@@ -142,4 +142,29 @@ describe("BenefitsForm Controller Tests", () => {
 
         expect(res.status).toBe(400);
     });
+    it("should fail to update benefit with invalid id", async () => {
+        const res = await request(app).patch(`/benefits/update/A1`);
+        expect(res.status).toBe(400);
+    });
+
+    it("should fail to update benefit if not found", async () => {
+        const res = await request(app).patch(
+            `/benefits/update/60f5f4c0f0f0f0f0f0f0f0f0`
+        );
+        expect(res.status).toBe(404);
+        expect(res.body.erro).toBe("Not Found");
+    });
+    it("should return validation error when invalid data is provided", async () => {
+        const invalidData = {
+            nome: "",
+            statusConvenio: "Ativo",
+        };
+
+        const res = await request(app)
+            .post("/benefits/create")
+            .send(invalidData);
+
+        expect(res.status).toBe(400);
+        expect(res.body.erro).toBeDefined();
+    });
 });
