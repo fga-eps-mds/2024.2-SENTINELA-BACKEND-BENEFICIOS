@@ -148,7 +148,9 @@ describe("BenefitsForm Controller Tests", () => {
     });
 
     it("should fail to update benefit if not found", async () => {
-        const res = await request(app).patch(`/benefits/update/60f5f4c0f0f0f0f0f0f0f0f0`);
+        const res = await request(app).patch(
+            `/benefits/update/60f5f4c0f0f0f0f0f0f0f0f0`
+        );
         expect(res.status).toBe(404);
         expect(res.body.erro).toBe("Not Found");
     });
@@ -158,7 +160,9 @@ describe("BenefitsForm Controller Tests", () => {
             statusConvenio: "Ativo",
         };
 
-        const res = await request(app).post("/benefits/create").send(invalidData);
+        const res = await request(app)
+            .post("/benefits/create")
+            .send(invalidData);
 
         expect(res.status).toBe(400);
         expect(res.body.erro).toBeDefined();
