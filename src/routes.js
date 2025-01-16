@@ -1,23 +1,17 @@
 const express = require("express");
 const routes = express.Router();
 const benefitsFormController = require("./Controllers/benefitsFormController");
-//const { tokenValidation } = require("./Utils/token"); => Utilizacao do token.
+const {checkPermissions} = require("./Middlewares/accessControlMiddleware");
 
-// Private
-// routes.get('/benefits', tokenValidation, ???.getUsers);
-// routes.get('/benefits/:id', tokenValidation,  ???.getUserById);
-routes.post("/benefits/create", benefitsFormController.createBenefitsForm);
-routes.get("/benefits", benefitsFormController.getBenefitsForm);
-routes.get("/benefits/:id", benefitsFormController.getBenefitsFormById);
+routes.post("/benefits/create",checkPermissions('beneficios_criar'), benefitsFormController.createBenefitsForm);
+routes.get("/benefits", checkPermissions('beneficios_visualizar'), benefitsFormController.getBenefitsForm);
+routes.get("/benefits/:id", checkPermissions('beneficios_visualizar'), benefitsFormController.getBenefitsFormById);
 routes.delete(
-    "/benefits/delete/:id",
+    "/benefits/delete/:id",checkPermissions('beneficios_deletar'),
     benefitsFormController.deleteBenefitsFormById
 );
 routes.patch(
-    "/benefits/update/:id",
+    "/benefits/update/:id", checkPermissions('beneficios_editar'),
     benefitsFormController.updateBenefitsFormById
 );
-
-// Public
-
 module.exports = routes;
