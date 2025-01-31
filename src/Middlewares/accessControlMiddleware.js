@@ -6,9 +6,13 @@ const checkPermissions = (permissionName) => {
             const decoded = jwt.decode(
                 req.headers.authorization?.split(" ")[1]
             );
-
-            const permission = decoded._doc.permissions.find(
-                (perm) => perm.name === permissionName
+            if (!decoded) {
+                return res
+                    .status(401)
+                    .json({ mensagem: "Tokem não fornecido." });
+            }
+            const permission = decoded.permissions.find(
+                (perm) => perm === permissionName
             );
 
             if (!permission) {
